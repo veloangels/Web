@@ -1,39 +1,37 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-translate-key="page_title">VÉLO ANGELS AGENCY - Impulsa tu Éxito</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-translate-key="page_title">VÉLO ANGELS AGENCY - Impulsa tu Éxito</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <header>
-        <canvas id="header-animation-canvas"></canvas>
-        <nav class="container">
-            <a href="#" class="logo-text">
-                <span class="logo-text-velo">VÉLO</span>
-                <span class="logo-text-angels">ANGELS</span>
-            </a>
+  <header>
+    <canvas id="header-animation-canvas"></canvas>
+    <nav class="container">
+      <a href="#" class="logo-text">
+        <span class="logo-text-velo">VÉLO</span>
+        <span class="logo-text-angels">ANGELS</span>
+      </a>
+      <div class="menu-toggle" id="mobile-menu">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#hero" data-translate-key="nav_home">Inicio</a></li>
+        <li><a href="#about" data-translate-key="nav_about">Quiénes Somos</a></li>
+        <li><a href="#services" data-translate-key="nav_services">Servicios</a></li>
+        <li><a href="#apply" data-translate-key="nav_join">Únete</a></li>
+        <li><a href="#contact" data-translate-key="nav_contact">Contacto</a></li>
+      </ul>
+      <button id="language-switch-btn" class="language-switcher" aria-label="Cambiar idioma">ES</button>
+    </nav>
+  </header>
 
-            <div class="menu-toggle" id="mobile-menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-            <ul class="nav-links">
-                <li><a href="#hero" data-translate-key="nav_home">Inicio</a></li>
-                <li><a href="#about" data-translate-key="nav_about">Quiénes Somos</a></li>
-                <li><a href="#services" data-translate-key="nav_services">Servicios</a></li>
-                <li><a href="#apply" data-translate-key="nav_join">Únete</a></li>
-                <li><a href="#contact" data-translate-key="nav_contact">Contacto</a></li>
-            </ul>
-            <button id="language-switch-btn" class="language-switcher" aria-label="Cambiar idioma">ES</button>
-        </nav>
-    </header>
+  <main>
 
-    <main>
-        <section id="hero">
+    <section id="hero">
             <div class="hero-content">
                 <h1 class="text-box-collide" data-translate-key="hero_title">Impulsa Tu Éxito en OnlyFans</h1>
                 <p class="text-box-collide" data-translate-key="hero_subtitle">VÉLO ANGELS AGENCY es tu aliado estratégico para potenciar tu marca, optimizar tus ganancias y gestionar tu carrera en la plataforma de contenido para adultos líder.</p>
@@ -81,67 +79,72 @@
                 </div>
             </div>
         </section>
+    <!-- Omitido: Secciones de hero, about, services (ya las tienes iguales) -->
 
-        <section id="apply">
-            <div class="container">
-                <div class="apply-content">
-                    <h2 class="text-box-collide" data-translate-key="apply_title">¿Listo para Potenciar tu Carrera?</h2>
-                    <p class="text-box-collide" data-translate-key="apply_subtitle">En VÉLO ANGELS, buscamos creadores de contenido con visión y potencial. Únete a nuestro equipo y experimenta el soporte que necesitas para triunfar.</p>
-                    <div class="apply-benefits">
-                        <div class="benefit-item text-box-collide" data-translate-key="benefit1">Crecimiento Acelerado</div>
-                        <div class="benefit-item text-box-collide" data-translate-key="benefit2">Gestión Profesional</div>
-                        <div class="benefit-item text-box-collide" data-translate-key="benefit3">Mayor Monetización</div>
-                        <div class="benefit-item text-box-collide" data-translate-key="benefit4">Soporte 24/7</div>
-                        <div class="benefit-item text-box-collide" data-translate-key="benefit5">Confidencialidad Total</div>
-                    </div>
+    <section id="apply">
+      <div class="container">
+        <div class="apply-content">
+          <h2 class="text-box-collide" data-translate-key="apply_title">¿Listo para Potenciar tu Carrera?</h2>
+          <p class="text-box-collide" data-translate-key="apply_subtitle">En VÉLO ANGELS, buscamos creadores de contenido con visión y potencial. Únete a nuestro equipo y experimenta el soporte que necesitas para triunfar.</p>
+          <div class="apply-benefits">
+            <div class="benefit-item text-box-collide" data-translate-key="benefit1">Crecimiento Acelerado</div>
+            <div class="benefit-item text-box-collide" data-translate-key="benefit2">Gestión Profesional</div>
+            <div class="benefit-item text-box-collide" data-translate-key="benefit3">Mayor Monetización</div>
+            <div class="benefit-item text-box-collide" data-translate-key="benefit4">Soporte 24/7</div>
+            <div class="benefit-item text-box-collide" data-translate-key="benefit5">Confidencialidad Total</div>
+          </div>
 
-                    <form action="mailto:veloangels.agency@gmail.com" method="POST" enctype="text/plain">
-                        <h3 class="text-box-collide" data-translate-key="form_title">Formulario de Aplicación</h3>
-                        <div class="form-group">
-                            <label for="name" class="text-box-collide" data-translate-key="form_name_label">Nombre Completo:</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email" class="text-box-collide" data-translate-key="form_email_label">Email:</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="of-link" class="text-box-collide" data-translate-key="form_oflink_label">Enlace a tu perfil de OnlyFans (o redes sociales relevantes):</label>
-                            <input type="text" id="of-link" name="of-link">
-                        </div>
-                        <div class="form-group">
-                            <label for="message" class="text-box-collide" data-translate-key="form_message_label">Háblanos de ti y de tus objetivos:</label>
-                            <textarea id="message" name="message" required></textarea>
-                        </div>
-                        <input type="submit" value="Enviar Aplicación" class="btn" data-translate-key="form_submit_btn" data-value-es="Enviar Aplicación" data-value-en="Send Application">
-                    </form>
-                </div>
+          <!-- FORMULARIO ACTUALIZADO -->
+          <form action="https://formsubmit.co/veloangels.agency@gmail.com" method="POST" autocomplete="on">
+            
+            <input type="hidden" name="_next" value="https://veloangels.github.io/Web/gracias.html">
+            <h3 class="text-box-collide" data-translate-key="form_title">Formulario de Aplicación</h3>
+
+            <!-- Antispam -->
+            <input type="text" name="_honey" style="display:none">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_next" value="https://veloangels.github.io/Web/gracias.html">
+
+            <div class="form-group">
+              <label for="name" class="text-box-collide" data-translate-key="form_name_label">Nombre Completo:</label>
+              <input type="text" id="name" name="name" required />
             </div>
-        </section>
 
-        <section id="contact">
-            <div class="container">
-                <h2 class="text-box-collide" data-translate-key="contact_title">Contáctanos</h2>
-                <p class="text-box-collide" data-translate-key="contact_subtitle">Estamos aquí para responder a tus preguntas y ayudarte a dar el siguiente paso.</p>
-                <div class="contact-info">
-                    <p class="text-box-collide"> Email: <a href="mailto:veloangels.agency@gmail.com">veloangels.agency@gmail.com</a></p>
-                    <p class="text-box-collide">Instagram: <a href="https://www.instagram.com/veloangels.angency/" target="_blank">@veloangels.agency</a></p>
-                    <p class="text-box-collide">WhatsApp: <a href="https://wa.me/XXXXXXXXXX" target="_blank">642584187</a></p>
-                </div>
-                <p class="text-box-collide" data-translate-key="contact_form_note">También puedes enviarnos un mensaje a través del formulario en la sección "Únete".</p>
+            <div class="form-group">
+              <label for="email" class="text-box-collide" data-translate-key="form_email_label">Email:</label>
+              <input type="email" id="email" name="email" required />
             </div>
-        </section>
-    </main>
 
-    <footer>
-        <div class="container">
-            <p class="text-box-collide" data-translate-key="footer_copyright">&copy; 2024 VÉLO ANGELS AGENCY. Todos los derechos reservados.</p>
-            <div class="social-links">
-                <a href="https://www.instagram.com/veloangels.angency/" target="_blank" data-translate-key="footer_instagram_link">Instagram</a>
+            <div class="form-group">
+              <label for="of-link" class="text-box-collide" data-translate-key="form_oflink_label">Enlace a tu perfil de OnlyFans (o redes sociales relevantes):</label>
+              <input type="url" id="of-link" name="of-link" placeholder="https://" />
             </div>
+
+            <div class="form-group">
+              <label for="message" class="text-box-collide" data-translate-key="form_message_label">Háblanos de ti y de tus objetivos:</label>
+              <textarea id="message" name="message" required></textarea>
+            </div>
+
+            <input type="submit" value="Enviar Aplicación" class="btn" data-translate-key="form_submit_btn" data-value-es="Enviar Aplicación" data-value-en="Send Application" />
+          </form>
         </div>
-    </footer>
+      </div>
+    </section>
 
-    <script src="script.js"></script>
+    <!-- Omitido: Sección contacto y footer igual que antes -->
+  </main>
+
+  <footer>
+    <div class="container">
+      <p class="text-box-collide" data-translate-key="footer_copyright">
+        &copy; 2024 VÉLO ANGELS AGENCY. Todos los derechos reservados.
+      </p>
+      <div class="social-links">
+        <a href="https://www.instagram.com/veloangels.angency/" target="_blank" data-translate-key="footer_instagram_link">Instagram</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>

@@ -329,4 +329,142 @@ document.addEventListener('DOMContentLoaded', () => {
     // Establecer el idioma inicial al cargar la página
     setLanguage(currentLang);
 
+    // Validación del formulario
+    const form = document.querySelector('form');
+    const nameInput = document.getElementById('name');
+    const emailInput = document.getElementById('email');
+    const ofLinkInput = document.getElementById('of-link');
+    const messageInput = document.getElementById('message');
+
+    // Función para mostrar errores
+    function showError(input, message) {
+        const formGroup = input.parentElement;
+        const errorDiv = formGroup.querySelector('.error-message') || document.createElement('div');
+        errorDiv.className = 'error-message';
+        errorDiv.textContent = message;
+        if (!formGroup.querySelector('.error-message')) {
+            formGroup.appendChild(errorDiv);
+        }
+        input.classList.add('error');
+    }
+
+    // Función para limpiar errores
+    function clearError(input) {
+        const formGroup = input.parentElement;
+        const errorDiv = formGroup.querySelector('.error-message');
+        if (errorDiv) {
+            formGroup.removeChild(errorDiv);
+        }
+        input.classList.remove('error');
+    }
+
+    // Validaciones
+    function validateName(name) {
+        return name.length >= 2 && /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/.test(name);
+    }
+
+    function validateEmail(email) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    function validateUrl(url) {
+        if (!url) return true; // URL es opcional
+        try {
+            new URL(url);
+            return true;
+        } catch {
+            return false;
+        }
+    }
+
+    function validateMessage(message) {
+        return message.length >= 10;
+    }
+
+    // Validación en tiempo real
+    nameInput.addEventListener('input', function() {
+        if (!validateName(this.value.trim())) {
+            showError(this, 'Por favor, ingresa un nombre válido (solo letras y espacios)');
+        } else {
+            clearError(this);
+        }
+    });
+
+    emailInput.addEventListener('input', function() {
+        if (!validateEmail(this.value.trim())) {
+            showError(this, 'Por favor, ingresa un email válido');
+        } else {
+            clearError(this);
+        }
+    });
+
+    ofLinkInput.addEventListener('input', function() {
+        if (!validateUrl(this.value.trim())) {
+            showError(this, 'Por favor, ingresa una URL válida');
+        } else {
+            clearError(this);
+        }
+    });
+
+    messageInput.addEventListener('input', function() {
+        if (!validateMessage(this.value.trim())) {
+            showError(this, 'Por favor, escribe un mensaje de al menos 10 caracteres');
+        } else {
+            clearError(this);
+        }
+    });
+
+    // Validación al enviar
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        let isValid = true;
+        
+        // Validar todos los campos
+        if (!validateName(nameInput.value.trim())) {
+            showError(nameInput, 'Por favor, ingresa un nombre válido');
+            isValid = false;
+        }
+        
+        if (!validateEmail(emailInput.value.trim())) {
+            showError(emailInput, 'Por favor, ingresa un email válido');
+            isValid = false;
+        }
+        
+        if (!validateUrl(ofLinkInput.value.trim())) {
+            showError(ofLinkInput, 'Por favor, ingresa una URL válida');
+            isValid = false;
+        }
+        
+        if (!validateMessage(messageInput.value.trim())) {
+            showError(messageInput, 'Por favor, escribe un mensaje de al menos 10 caracteres');
+            isValid = false;
+        }
+
+        if (isValid) {
+            // Mostrar indicador de carga
+            const submitButton = form.querySelector('input[type="submit"]');
+            const originalText = submitButton.value;
+            submitButton.value = 'Enviando...';
+            submitButton.disabled = true;
+
+            // Enviar el formulario
+            fetch(form.action, {
+                method: 'POST',
+                body: new FormData(form)
+            })
+            .then(response => {
+                if (response.ok) {
+                    window.location.href = form.querySelector('input[name="_next"]').value;
+                } else {
+                    throw new Error('Error en el envío');
+                }
+            })
+            .catch(error => {
+                submitButton.value = originalText;
+                submitButton.disabled = false;
+                alert('Hubo un error al enviar el formulario. Por favor, intenta de nuevo.');
+            });
+        }
+    });
 });

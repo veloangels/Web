@@ -458,3 +458,73 @@ footer {
        Si lo quieres siempre visible junto al logo o al menú hamburguesa, ajústalo aquí.
     */
 }
+
+/* Estilos para la validación del formulario */
+.form-group {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.error-message {
+    color: #ff4444;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+}
+
+input.error,
+textarea.error {
+    border-color: #ff4444;
+    background-color: #fff8f8;
+}
+
+input:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* Mejoras visuales para el formulario */
+.form-group input,
+.form-group textarea {
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #4a90e2;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+}
+
+/* Estilos para el botón de envío */
+form .btn {
+    position: relative;
+    overflow: hidden;
+}
+
+form .btn:disabled {
+    opacity: 0.7;
+    cursor: wait;
+}
+
+form .btn:disabled::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ffffff;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+@keyframes spin {
+    to {
+        transform: translateY(-50%) rotate(360deg);
+    }
+}

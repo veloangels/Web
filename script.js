@@ -34,16 +34,16 @@ document.addEventListener('DOMContentLoaded', () => {
     let fallingElements = [];
     let collisionBoxRects = [];
 
-    const numDustParticles = 150;
+    const numDustParticles = 60;
     const particleColor = 'rgba(255, 215, 0, 0.8)';
-    const particleMinRadius = 0.8;
-    const particleMaxRadius = 2.5;
-    const particleSpeed = 0.3;
-    const numFallingElements = 15;
-    const baseFallingElementSpeed = 0.8;
-    const dollarSignColor = '#FFD700';
-    const dollarMinSize = 20;
-    const dollarMaxSize = 35;
+    const particleMinRadius = 0.5;
+    const particleMaxRadius = 1.5;
+    const particleSpeed = 0.2;
+    const numFallingElements = 10;
+    const baseFallingElementSpeed = 0.6;
+    const dollarSignColor = 'rgba(255, 215, 0, 0.8)';
+    const dollarMinSize = 15;
+    const dollarMaxSize = 25;
 
     function updateCollisionBoxRects() {
         collisionBoxRects = [];
@@ -69,14 +69,17 @@ document.addEventListener('DOMContentLoaded', () => {
             this.color = particleColor;
             this.speedX = (Math.random() - 0.5) * 2 * particleSpeed;
             this.speedY = (Math.random() - 0.5) * 2 * particleSpeed;
+            this.opacity = 0.6 + Math.random() * 0.2;
         }
         draw() {
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
             ctx.fillStyle = this.color;
+            ctx.globalAlpha = this.opacity;
             ctx.shadowColor = this.color;
-            ctx.shadowBlur = this.radius * 3;
+            ctx.shadowBlur = this.radius * 2;
             ctx.fill();
+            ctx.globalAlpha = 1;
         }
         update() {
             this.x += this.speedX;
@@ -94,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
             this.y = (Math.random() * canvas.height * 0.5) - (canvas.height * 0.5) - dollarMaxSize;
             this.size = Math.random() * (dollarMaxSize - dollarMinSize) + dollarMinSize;
             this.speedY = baseFallingElementSpeed + (Math.random() - 0.5) * 0.4;
-            this.opacity = 0.3 + Math.random() * 0.2;
+            this.opacity = 0.6 + Math.random() * 0.2;
             this.rotation = Math.random() * Math.PI * 2;
             this.rotationSpeed = (Math.random() - 0.5) * 0.02;
         }
@@ -106,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ctx.textBaseline = 'middle';
             ctx.fillStyle = dollarSignColor;
             ctx.shadowColor = dollarSignColor;
-            ctx.shadowBlur = this.size * 0.3;
+            ctx.shadowBlur = this.size * 0.2;
             ctx.translate(this.x, this.y);
             ctx.rotate(this.rotation);
             ctx.fillText('$', 0, 0);
@@ -114,43 +117,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         update() {
             this.rotation += this.rotationSpeed;
-            let nextY = this.y + this.speedY;
-            const dHalfSize = this.size / 2;
-            let collidedThisFrame = false;
-            for (const box of collisionBoxRects) {
-                const dollarLeft = this.x - dHalfSize;
-                const dollarRight = this.x + dHalfSize;
-                const dollarTop = nextY - dHalfSize;
-                const dollarBottom = nextY + dHalfSize;
-                if (dollarLeft < box.right && dollarRight > box.left &&
-                    dollarTop < box.bottom && dollarBottom > box.top) {
-                    collidedThisFrame = true;
-                    if (this.speedY > 0 && (this.y + dHalfSize) <= box.top + 5) {
-                        this.y = box.top - dHalfSize - 1;
-                    } else if (this.speedY < 0 && (this.y - dHalfSize) >= box.bottom - 5) {
-                        this.y = box.bottom + dHalfSize + 1;
-                    } else {
-                        if (this.speedY > 0) this.y = box.top - dHalfSize - 1;
-                        else this.y = box.bottom + dHalfSize + 1;
-                    }
-                    this.speedY *= -0.6;
-                    if (Math.abs(this.speedY) < 0.2) {
-                        this.speedY = (Math.random() > 0.5 ? 0.2 : -0.2) * (baseFallingElementSpeed / 2);
-                    }
-                    break;
-                }
-            }
-            if (!collidedThisFrame) {
-                this.y = nextY;
-            }
-            if (this.y > canvas.height + this.size && this.speedY > 0) {
+            this.y += this.speedY;
+            
+            if (this.y > canvas.height + this.size) {
                 this.y = -this.size - Math.random() * 50;
                 this.x = Math.random() * canvas.width;
                 this.speedY = baseFallingElementSpeed + (Math.random() - 0.5) * 0.4;
-            } else if (this.y < -this.size - 100 && this.speedY < 0) {
-                this.y = -this.size - Math.random() * 50;
-                this.x = Math.random() * canvas.width;
-                this.speedY = baseFallingElementSpeed * 0.5;
             }
         }
     }

@@ -435,28 +435,64 @@ footer {
     cursor: pointer;
     transition: background-color 0.3s ease;
     font-family: 'Montserrat', sans-serif;
-    margin-left: 1rem; /* Ajusta según sea necesario */
+    margin-left: 1rem;
+    z-index: 1000;
 }
 
 .language-switcher:hover {
     background-color: var(--accent-hover);
 }
 
-/* Ajustes para el menú móvil si el botón está dentro */
+/* Ajustes para dispositivos móviles */
 @media (max-width: 768px) {
-    nav .language-switcher {
-        /* Podrías querer moverlo o estilizarlo diferente en móvil */
-        /* Ejemplo: display: block; margin: 1rem auto; */
-         margin-top: 1rem;
-         margin-left: 0; /* Centrarlo o alinearlo si se mueve a una nueva línea */
-         align-self: center; /* Si el nav ul es flex y column */
+    /* Contenedor de navegación */
+    nav {
+        position: relative;
+        padding: 1rem;
     }
-    /* Si el botón está fuera del ul.nav-links y debe aparecer con el menú hamburguesa,
-       necesitarás lógica JS adicional para mostrarlo/ocultarlo o moverlo al DOM.
-       Para simplificar, este ejemplo lo mantiene visible en el nav.
-       Si está dentro del ul.nav-links, se moverá con él.
-       Si lo quieres siempre visible junto al logo o al menú hamburguesa, ajústalo aquí.
-    */
+
+    /* Ajustes del menú móvil */
+    .menu-toggle {
+        margin-left: auto; /* Empuja el menú hamburguesa a la derecha */
+        margin-right: 1rem; /* Espacio entre el menú hamburguesa y el botón de idioma */
+    }
+
+    /* Posicionamiento del botón de idioma en móvil */
+    .language-switcher {
+        position: absolute;
+        right: 4rem; /* Ajusta la distancia desde la derecha */
+        top: 50%; /* Centra verticalmente */
+        transform: translateY(-50%); /* Ajuste fino del centrado vertical */
+        margin: 0; /* Elimina el margen para mejor control */
+        padding: 0.4rem 0.8rem; /* Reduce ligeramente el padding para móvil */
+        font-size: 0.9rem; /* Reduce ligeramente el tamaño de fuente */
+    }
+
+    /* Ajuste del menú desplegable */
+    nav ul {
+        top: 0;
+        right: -100%;
+        width: 70%;
+        height: 100vh;
+        background-color: var(--primary-bg);
+        position: fixed;
+        padding-top: 4rem;
+        transition: right 0.3s ease;
+        z-index: 998;
+    }
+
+    nav ul.active {
+        right: 0;
+    }
+
+    /* Ajustes adicionales para pantallas muy pequeñas */
+    @media (max-width: 360px) {
+        .language-switcher {
+            right: 3.5rem; /* Ajusta para pantallas muy pequeñas */
+            padding: 0.3rem 0.6rem;
+            font-size: 0.8rem;
+        }
+    }
 }
 
 /* Estilos para la validación del formulario */

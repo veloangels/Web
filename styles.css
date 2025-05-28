@@ -1,0 +1,188 @@
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin: 3rem auto;
+    padding: 0 1rem;
+    max-width: 900px;
+}
+
+.contact-grid .contact-item:last-child {
+    grid-column: 1 / -1;
+    max-width: 400px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.contact-item {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    padding: 2rem;
+    text-align: center;
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact-item-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    padding: 1.5rem;
+}
+
+.contact-subitem {
+    padding: 1.5rem;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.03);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.contact-subitem:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Aseguramos que el contenedor padre no se transforme */
+.contact-item-stack:hover {
+    transform: none;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.contact-item:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.contact-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1.2rem;
+    color: var(--accent-color);
+}
+
+.contact-item h3 {
+    margin-bottom: 1rem;
+    color: var(--text-color);
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.contact-link {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+    word-break: break-word;
+}
+
+.contact-link:hover {
+    color: var(--accent-color);
+}
+
+/* Efecto de mecha para el botón */
+.btn {
+    position: relative;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid var(--accent-color);
+    color: var(--text-color);
+    padding: 1rem 2rem;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    background: var(--accent-color);
+    color: var(--bg-color);
+}
+
+/* Efecto de mecha para el botón Aplica Ahora */
+.btn-apply {
+    background: #ffd700;
+    color: #000;
+    font-weight: 600;
+    position: relative;
+    overflow: hidden;
+    border: none;
+    transition: transform 0.3s ease;
+    z-index: 1;
+}
+
+.btn-apply::before,
+.btn-apply::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(45deg, 
+        #fff, #ffd700, #fff, #ffd700, 
+        #fff, #ffd700, #fff, #ffd700);
+    background-size: 400%;
+    z-index: -1;
+    animation: none;
+    transition: 0.5s ease;
+}
+
+.btn-apply::after {
+    filter: blur(10px);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.btn-apply:hover {
+    color: #000;
+    transform: scale(1.02);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+}
+
+.btn-apply:hover::before {
+    animation: borderGlow 3s linear infinite;
+}
+
+.btn-apply:hover::after {
+    opacity: 0.5;
+    animation: borderGlow 3s linear infinite;
+}
+
+@keyframes borderGlow {
+    0% {
+        background-position: 0 0;
+    }
+    50% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: 400% 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 0 1rem;
+    }
+    
+    .contact-item {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .contact-item {
+        padding: 1.2rem;
+    }
+} 
